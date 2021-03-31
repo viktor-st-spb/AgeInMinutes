@@ -36,13 +36,19 @@ class MainActivity : AppCompatActivity() {
         val month = myCalendar.get(Calendar.MONTH)
         val day = myCalendar.get(Calendar.DAY_OF_MONTH)
 
-
         DatePickerDialog(this,
                 DatePickerDialog.OnDateSetListener {
                     view, SelectedYear, SelectedMonth, SelectedDayOfMonth ->
 
                     //TODO - this code will be executed after the date will be selected
-                    Toast.makeText(this, "DatePicker works", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,
+                            "The year is $SelectedYear, the month is  " +
+                                    "and the date is $SelectedDayOfMonth" ,
+                            Toast.LENGTH_LONG).show()
+
+                    val selectedDate = "$SelectedDayOfMonth/${SelectedMonth+1}/$SelectedYear"
+
+                    tvSelectedDate.setText(selectedDate)
 
                 }, year, month, day)
                 .show()
